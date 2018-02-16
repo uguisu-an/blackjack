@@ -1,6 +1,5 @@
 import random
 from blackjack.game import Game
-from blackjack.player import Player
 from blackjack.deck import generate_deck
 
 def main():

@@ -23,8 +23,8 @@ class Game:
         self.show_result()
     
     def is_over(self):
-        d = hand.sum_of_point(self.dealer)
-        p = hand.sum_of_point(self.player)
+        d = hand.sum_of_point([c.number for c in self.dealer])
+        p = hand.sum_of_point([c.number for c in self.player])
         return (
             hand.is_blackjack(d)
             or hand.is_busted(d)
@@ -46,8 +46,8 @@ class Game:
     
     # TODO: 敗因もつける？
     def get_result(self):
-        d = hand.sum_of_point(self.dealer)
-        p = hand.sum_of_point(self.player)
+        d = hand.sum_of_point([c.number for c in self.dealer])
+        p = hand.sum_of_point([c.number for c in self.player])
         if self.is_double_blackjack():
             return result.DRAW
         if hand.is_blackjack(d) or hand.is_busted(p):
