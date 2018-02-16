@@ -1,8 +1,25 @@
 import random
-import tramp.suit as st
-import blackjack.card as cr
+import tramp.suit as suit
+import tramp.number as number
+from tramp.card import Card
 from blackjack.hand import Hand
 from blackjack.player import Player
+
+
+def generate_deck():
+    deck = []
+    for suit_ in suit.All:
+        for number_ in number.All:
+            deck.append(Card(suit_, number_))
+    return deck
+
+def deal(deck, hand):
+    return (deck[1:], [deck[0], *hand])
+
+def shuffled(deck):
+    deck_ = deck[:]
+    random.shuffle(deck_)
+    return deck_
 
 
 class Deck:

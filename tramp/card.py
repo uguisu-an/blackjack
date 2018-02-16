@@ -14,4 +14,3 @@ class Card:
     
     def __gt__(self, other):
         self.number > other.number
-    

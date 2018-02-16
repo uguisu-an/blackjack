@@ -1,23 +1,19 @@
-from blackjack.hand import Hand
+import blackjack.hand as hd
 
 
 class Player:
-    def __init__(self, deck, hand=Hand()):
+    def __init__(self, deck, hand):
         self.deck = deck
         self.hand = hand
-        self._is_stand = False
 
     def hit(self):
         self.hand = self.deck.deal(self.hand)
 
     def stand(self):
-        self._is_stand = True
-    
-    def is_stand(self):
-        return self._is_stand
-    
+        return 
+
     def is_blackjack(self):
-        return self.hand.is_blackjack()
+        return hd.is_blackjack(self.hand)
 
     def is_busted(self):
-        return self.hand.is_busted()
+        return hd.is_busted(self.hand)
