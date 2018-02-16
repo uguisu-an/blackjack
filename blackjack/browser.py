@@ -12,10 +12,10 @@ class SimpleBrowser:
     
     def show_state(self, dealer, player, hole=1):
         print('Dealer:')
-        self.show_hand(dealer, hole=hole)
+        self.show_hand(dealer.hand, hole=hole)
         print()
         print('Player:')
-        self.show_hand(player, hole=0)
+        self.show_hand(player.hand, hole=0)
         print()
 
     def show_hand(self, hand, hole=1):

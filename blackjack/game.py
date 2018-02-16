@@ -1,62 +1,54 @@
 from blackjack.deck import Deck
-import blackjack.player as Player
+from blackjack.player import Player
 import blackjack.result as res
 from blackjack.browser import SimpleBrowser
 
 
-def hit(deck, hand):
-    return (deck.deal(hand), False)
-
-def stand(deck, hand):
-    return (hand, True)
-
-def hit_or_stand(deck, hand, player_is_stand):
-    if player_is_stand:
-        return stand(deck, hand)
+def hit_or_stand(player):
+    if player.is_stand():
+        return
     print('h[it] or s[tand]')
     choice = input()
     if 'h' in choice:
-        return hit(deck, hand)
+        player.hit()
     else:
-        return stand(deck, hand)
+        player.stand()
     
-def auto_hit_or_stand(deck, hand, player_is_stand):
-    if player_is_stand:
-        return stand(deck, hand)
-    if Player.sum_of(hand) > 16:
-        return stand(deck, hand) 
+def auto_hit_or_stand(player):
+    if player.is_stand():
+        return
+    if player.hand.sum_of_points() < 17:
+        player.hit()
     else:
-        return hit(deck, hand)
+        player.stand()
 
 
 
 class Game:
-    dealer = []
-    player = []
     browser = SimpleBrowser()
 
     def start(self):
         self.deck = Deck()
         self.deck.shuffle()
-        self.dealer = []
-        self.player = []
+        self.dealer = Player(self.deck)
+        self.player = Player(self.deck)
         for _ in range(2):
-            self.player = self.deck.deal(self.player)
-            self.dealer = self.deck.deal(self.dealer)
+            self.player.hit()
+            self.dealer.hit()
+        
+        print(self.player.hand.sum_of_points())
+        print(self.dealer.hand.sum_of_points())
 
         if self.should_stop(self.dealer) or self.should_stop(self.player):
             self.stop()
             return
         
-        player_is_stand = False
-        dealer_is_stand = False
-        
-        while not player_is_stand:
+        while not self.player.is_stand():
             self.show_state()
-            self.player, player_is_stand = hit_or_stand(self.deck, self.player, player_is_stand)
+            hit_or_stand(self.player)
             if self.should_stop(self.player):
                 break
-            self.dealer, dealer_is_stand = auto_hit_or_stand(self.deck, self.dealer, dealer_is_stand)
+            auto_hit_or_stand(self.dealer)
             if self.should_stop(self.dealer):
                 break
         self.stop()
@@ -66,25 +58,25 @@ class Game:
         self.show_result(self.finalResult())
     
     def should_stop(self, player):
-        if Player.is_blackjack(player) or Player.is_busted(player):
+        if player.is_blackjack() or player.is_busted():
             return True
         return False
 
     # TODO: 敗因もつける？
     def finalResult(self):
-        if Player.is_blackjack(self.dealer) and Player.is_blackjack(self.player):
+        if self.dealer.is_blackjack() and self.player.is_blackjack():
             return res.DRAW
-        if Player.is_blackjack(self.dealer):
-            return res.LOSE
-        if Player.is_busted(self.dealer):
+        if self.player.is_blackjack():
             return res.WIN
-        if Player.is_blackjack(self.player):
+        if self.player.is_busted():
+            return res.LOSE
+        if self.dealer.is_blackjack():
+            return res.LOSE
+        if self.dealer.is_busted():
             return res.WIN
-        if Player.is_busted(self.player):
+        if self.dealer.hand > self.player.hand:
             return res.LOSE
-        if Player.sum_of(self.dealer) > Player.sum_of(self.player):
-            return res.LOSE
-        if Player.sum_of(self.dealer) < Player.sum_of(self.player):
+        if self.dealer.hand < self.player.hand:
             return res.WIN
         return res.DRAW
     

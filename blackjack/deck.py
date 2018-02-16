@@ -1,6 +1,8 @@
 import random
 import tramp.suit as st
 import blackjack.card as cr
+from blackjack.hand import Hand
+from blackjack.player import Player
 
 
 class Deck:
@@ -13,7 +15,7 @@ class Deck:
     
     def deal(self, hand):
         card = self._deck.pop()
-        return [card, *hand]
+        return Hand([card, *hand])
     
     def shuffle(self):
         random.shuffle(self._deck)
