@@ -1,26 +1,19 @@
-import tramp.number as number
+import tramp.number as nm
+import blackjack.point as pt
 import blackjack.result as result
 
 
-def point(number_):
-    assert number_ in number.All
-    if number_ > 10:
-        return 10
-    return number_
+def _numbers(hand):
+    return [c.number for c in hand]
 
-def sum_of_point(numbers):
-    s = 0
-    for n in sorted(numbers, reverse=True):
-        s += point(n)
-        if n == 1 and not is_busted(s+10):
-            s += 10
-    return s
+def sum_of(hand):
+    pt.sum_of_point(_numbers(hand))
 
-def diff(a, b):
-    return sum_of_point(a) - sum_of_point(b)
+def is_blackjack(hand):
+    return result.is_blackjack(sum_of(hand))
 
-def is_blackjack(point_):
-    return point_ == result.BLACKJACK
+def is_busted(hand):
+    return result.is_busted(sum_of(hand))
 
-def is_busted(point_):
-    return point_ > result.BLACKJACK
+def is_double_blackjack(a, b):
+    return is_blackjack(a) and is_blackjack(b)
