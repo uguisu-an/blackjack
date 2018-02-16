@@ -3,6 +3,9 @@ class Card:
         self.suit = suit
         self.number = number
     
+    def __repr__(self):
+        return '<Card {}{}>'.format(self.suit, self.number)
+    
     def __eq__(self, other):
         return (
             self.suit == other.suit
@@ -10,7 +13,7 @@ class Card:
         )
     
     def __lt__(self, other):
-        self.number < other.number
+        return self.number < other.number
     
     def __gt__(self, other):
-        self.number > other.number
+        return self.number > other.number

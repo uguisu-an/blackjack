@@ -8,11 +8,11 @@ def point(number_):
         return 10
     return number_
 
-def sum_of_point(hand):
+def sum_of_point(numbers):
     s = 0
-    for c in sorted(hand, reverse=True):
-        s += point(c.number)
-        if c.number == 1 and not is_busted(s+10):
+    for n in sorted(numbers, reverse=True):
+        s += point(n)
+        if n == 1 and not is_busted(s+10):
             s += 10
     return s
 
