@@ -1,18 +1,10 @@
-from blackjack import Deck
+from blackjack.deck import Deck
 
-
-def point(card):
-    _, n = card
-    if n == 0:
-        return (1, 11)
-    if n > 8:
-        return (10, 10)
-    return (n+1, n+1)
 
 def sum_of(hand):
     s = 0
     for c in sorted(hand, reverse=True):
-        p = point(c)
+        p = c.point()
         if s + p[1] > 21:
             s += p[0]
         else:
@@ -28,11 +20,8 @@ def showHand(hand, hole=0):
             print('* hole *')
             hole -= 1
             continue
-        print(suit(c), c[1] + 1, '->', point(c)[0])
+        print(c.suit, c.number, '>', c.point()[0])
 
-def suit(c):
-    t, _ = c
-    return ['♠︎', '♣︎', '♡', '♢'][t]
 
 def hit_or_stand(deck, hand, player_is_stand):
     if player_is_stand:

@@ -1,12 +1,14 @@
 import random
+import blackjack.suit as st
+from blackjack.card import Card
 
 
 class Deck:
     def __init__(self):
         deck = []
-        for x in range(4):
-            for y in range(13):
-                deck = [(x, y), *deck]
+        for suit in st.All:
+            for number in range(1, 13+1):
+                deck = [Card(suit, number), *deck]
         self._deck = deck
     
     def deal(self, hand):
