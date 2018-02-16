@@ -1,11 +1,5 @@
-from random import shuffle
+from blackjack import Deck
 
-
-def createDeck(deck=[]):
-    for x in range(4):
-        for y in range(13):
-            deck = [(x, y), *deck]
-    return deck
 
 def point(card):
     _, n = card
@@ -27,9 +21,6 @@ def sum_of(hand):
 
 def is_blackjack(hand):
     return sum_of(hand) == 21
-
-def deal(deck, to):
-    return [deck.pop(), *to]
 
 def showHand(hand, hole=0):
     for c in hand:
@@ -62,7 +53,7 @@ def auto_hit_or_stand(deck, hand, player_is_stand):
         return hit(deck, hand)
 
 def hit(deck, hand):
-    return (deal(deck, to=hand), False)
+    return (deck.deal(hand), False)
 
 def stand(deck, hand):
     return (hand, True)
@@ -79,13 +70,13 @@ def show(dealer, player, hole=1):
     print('')
     
 def main():
-    deck = createDeck()
-    shuffle(deck)
+    deck = Deck()
+    deck.shuffle()
     dealer = []
     player = []
     for _ in range(2):
-        player = deal(deck, to=player)
-        dealer = deal(deck, to=dealer)
+        player = deck.deal(player)
+        dealer = deck.deal(dealer)
 
     show(dealer, player)
 
