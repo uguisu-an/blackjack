@@ -1,6 +1,6 @@
 import random
 import tramp.suit as st
-import blackjack.card as cr
+import tramp.card as card
 
 
 class Deck:
@@ -8,7 +8,7 @@ class Deck:
         deck = []
         for suit in st.All:
             for number in range(1, 13+1):
-                deck = [cr.Card(suit, number), *deck]
+                deck = [card.Card(suit, number), *deck]
         self._deck = deck
     
     def deal(self, hand):
