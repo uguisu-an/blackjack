@@ -1,3 +1,4 @@
-import blackjack
+from blackjack import Game
 
-blackjack.start()
+game = Game()
+game.start()
