@@ -17,6 +17,3 @@ def is_busted(hand):
 
 def is_double_blackjack(a, b):
     return is_blackjack(a) and is_blackjack(b)
-
-def diff(a, b):
-    return sum_of(a) - sum_of(b)

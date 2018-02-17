@@ -10,3 +10,14 @@ def is_blackjack(point):
 
 def is_busted(point):
     return point > BLACKJACK
+
+def judge_from_point(dealer_point, player_point):
+    if is_busted(player_point):
+        return LOSE
+    if is_busted(dealer_point):
+        return WIN
+    if dealer_point > player_point:
+        return LOSE
+    if dealer_point < player_point:
+        return WIN
+    return DRAW

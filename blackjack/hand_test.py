@@ -27,7 +27,6 @@ def test_sum_of_hand():
     assert hd.is_blackjack(hand)
     assert hd.is_double_blackjack(hand, hand)
     assert not hd.is_busted(hand)
-    assert hd.diff(hand, hand) == 0
 
 def test_blackjack():
     assert not rs.is_blackjack(20)

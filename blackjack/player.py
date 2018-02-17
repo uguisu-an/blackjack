@@ -33,8 +33,9 @@ class AbstractPlayer:
     def is_busted(self):
         return hd.is_busted(self.hand)
     
-    def defeats(self, other):
-        return hd.diff(self.hand, other.hand) > 0
+    @property
+    def point(self):
+        return hd.sum_of(self.hand)
 
 
 class Player(AbstractPlayer):

@@ -44,23 +44,13 @@ class Game:
         )
     
     def show_result(self):
-        self.browser.show_result(judge(self.dealer, self.player))
+        res = judge(self.dealer, self.player)
+        self.browser.show_result(res)
     
     def show_state(self, hole=1):
         self.browser.show_state(self.dealer, self.player, hole=hole)
 
 
-def judge(a, b):
-    if a.is_blackjack() and b.is_blackjack():
-        return result.DRAW
-    if a.is_blackjack() or b.is_busted():
-        return result.LOSE
-    if b.is_blackjack():
-        return result.BLACKJACK
-    if a.is_busted():
-        return result.WIN
-    if a.defeats(b):
-        return result.LOSE
-    if b.defeats(a):
-        return result.WIN
-    return result.DRAW
+def judge(dealer, player):
+    return result.judge_from_point(dealer.point, player.point)
+    
