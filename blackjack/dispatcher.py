@@ -8,6 +8,9 @@ class Dispatcher:
     def off(self, topic, handler):
         self._handlers.setdefault(topic, [handler]).remove(handler)
     
-    def dispatch(self, **keywords):
-        for handler in self._handlers:
+    def dispatch(self, topic, **keywords):
+        for handler in self._handlers.setdefault(topic, []):
             handler(**keywords)
+
+
+dispatcher = Dispatcher()
