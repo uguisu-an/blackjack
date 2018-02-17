@@ -4,13 +4,15 @@ import blackjack.point as pt
 
 class SimpleBrowser:
     def show_result(self, result):
+        print(self.result_message(result))
+    
+    def result_message(self, result):
         if result == res.WIN:
-            print('You Win!')
-            return
+            return 'You Win!'
         if result == res.LOSE:
-            print('You Lose...')
-            return
-        print('Draw')
+            return 'You Lose...'
+        return 'Draw'
+
     
     def show_state(self, dealer, player, hole=True):
         if hole:
