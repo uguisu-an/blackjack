@@ -21,3 +21,23 @@ def test_defeating_another_player():
     assert john.defeats(jane)
     assert not jane.defeats(john)
     assert not john.defeats(john)
+
+def test_hitting():
+    deck = [1, 2, 3]
+    hand = []
+    john = Player(deck, hand)
+    assert not john.is_stand()
+    john.hit()
+    assert len(deck) == 2
+    assert len(hand) == 1
+    assert not john.is_stand()
+
+def test_standing():
+    deck = [1, 2, 3]
+    hand = []
+    john = Player(deck, hand)
+    assert not john.is_stand()
+    john.stand()
+    assert len(deck) == 3
+    assert len(hand) == 0
+    assert john.is_stand()
