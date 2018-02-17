@@ -55,7 +55,9 @@ def judge(a, b):
         return result.DRAW
     if a.is_blackjack() or b.is_busted():
         return result.LOSE
-    if a.is_busted() or b.is_blackjack():
+    if b.is_blackjack():
+        return result.BLACKJACK
+    if a.is_busted():
         return result.WIN
     if a.defeats(b):
         return result.LOSE
