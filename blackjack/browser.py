@@ -1,5 +1,5 @@
 import blackjack.result as res
-import blackjack.hand as hand
+import blackjack.hand as hd
 import blackjack.point as pt
 
 class SimpleBrowser:
@@ -12,21 +12,21 @@ class SimpleBrowser:
             return
         print('Draw')
     
-    def show_state(self, dealer, player, hole=1):
-        print('Dealer:')
-        self.show_hand(dealer, hole=hole)
+    def show_state(self, dealer, player, hole=True):
+        if hole:
+            print('Dealer:')
+        else:
+            print('Dealer ({}):'.format(hd.sum_of(dealer.hand)))
+        self.show_hand(dealer.hand, hole=hole)
         print()
-        print('Player:')
-        self.show_hand(player, hole=0)
+        print('Player ({}):'.format(hd.sum_of(player.hand)))
+        self.show_hand(player.hand, hole=False)
         print()
 
-    def show_hand(self, hand_, hole=1):
-        for c in hand_:
+    def show_hand(self, hand, hole=True):
+        for c in hand:
             if hole:
                 print('* hole *')
-                hole -= 1
+                hole = False
                 continue
             print('{} ({})'.format(c, pt.point(c.number)))
-
-
-    

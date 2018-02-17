@@ -6,22 +6,26 @@ class AbstractPlayer:
     def __init__(self, deck=[], hand=[]):
         self.deck = deck
         self.hand = hand
-        self.is_stand = False
+        self._is_stand = False
     
     def hit(self):
-        self.deck, self.hand = dk.deal(self.deck, self.hand)
+        card = self.deck.pop(0)
+        self.hand.append(card)
     
     def stand(self):
-        self.is_stand = True
-    
-    def choice(self):
-        if self.is_stand:
-            self.stand()
-        else:
-            self.hit_or_stand()
+        self._is_stand = True
     
     def hit_or_stand(self):
+        if self.is_stand():
+            self.stand()
+        else:
+            self.choice()
+    
+    def choice(self):
         raise NotImplementedError
+    
+    def is_stand(self):
+        return self._is_stand
     
     def is_blackjack(self):
         return hd.is_blackjack(self.hand)
@@ -34,7 +38,7 @@ class AbstractPlayer:
 
 
 class Player(AbstractPlayer):
-    def hit_or_stand(self):
+    def choice(self):
         print('hit or stand?')
         if 'h' in input():
             self.hit()
@@ -43,7 +47,7 @@ class Player(AbstractPlayer):
 
 
 class Dealer(AbstractPlayer):
-    def hit_or_stand(self):
+    def choice(self):
         if hd.sum_of(self.hand) < 17:
             self.hit()
         else:
