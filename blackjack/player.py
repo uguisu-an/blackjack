@@ -39,6 +39,8 @@ class AbstractPlayer:
 
 
 class Player(AbstractPlayer):
+    name = 'Player'
+
     def choice(self):
         print('hit or stand?')
         if 'h' in input():
@@ -48,6 +50,8 @@ class Player(AbstractPlayer):
 
 
 class Dealer(AbstractPlayer):
+    name = 'Dealer'
+
     def choice(self):
         if hd.sum_of(self.hand) < 17:
             self.hit()
