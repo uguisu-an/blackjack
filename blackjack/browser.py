@@ -1,5 +1,6 @@
 import blackjack.result as res
 import blackjack.hand as hand
+import blackjack.point as pt
 
 class SimpleBrowser:
     def show_result(self, result):
@@ -25,7 +26,7 @@ class SimpleBrowser:
                 print('* hole *')
                 hole -= 1
                 continue
-            print(c.suit, c.number, '({})'.format(hand.point(c.number)))
+            print('{} ({})'.format(c, pt.point(c.number)))
 
 
     
