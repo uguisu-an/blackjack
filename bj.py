@@ -1,5 +1,4 @@
-from blackjack import Deck, Dealer, Player
-from blackjack.game2 import Game
+from blackjack import Game, Deck, Dealer, Player
 from blackjack.hand_component import HandComponent
 from blackjack.hit_or_stand_component import HitOrStandComponent
 from blackjack.result_component import ResultComponent
