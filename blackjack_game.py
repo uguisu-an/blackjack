@@ -7,9 +7,11 @@ def main():
     player = Player(deck, [])
     game = Game(deck, dealer, player)
     game.begin()
-    if not game.is_over():
+    while not game.is_over():
+        game.show_state()
         game.turn()
-    game.end()
+    game.show_state(hole=False)
+    game.show_result()
 
 
 if __name__ == '__main__':
