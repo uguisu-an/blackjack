@@ -1,3 +1,4 @@
+from tramp import Card, Heart
 import blackjack.hand as hd
 import blackjack.point as pt
 import blackjack.result as rs
@@ -19,6 +20,14 @@ def test_sum_of_point_with_picture_card():
 
 def test_sum_of_point_without_card():
     assert pt.sum_of_point([]) == 0
+
+def test_sum_of_hand():
+    hand = [Card(Heart, 1), Card(Heart, 10)]
+    assert hd.sum_of(hand) == 21
+    assert hd.is_blackjack(hand)
+    assert hd.is_double_blackjack(hand, hand)
+    assert not hd.is_busted(hand)
+    assert hd.diff(hand, hand) == 0
 
 def test_blackjack():
     assert not rs.is_blackjack(20)

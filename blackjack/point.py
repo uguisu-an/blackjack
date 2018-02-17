@@ -15,6 +15,3 @@ def sum_of_point(numbers):
         if number == 1 and not result.is_busted(s+10):
             s += 10
     return s
-
-def diff(a, b):
-    return sum_of_point(a) - sum_of_point(b)
