@@ -4,7 +4,10 @@ class Card:
         self.number = number
     
     def __repr__(self):
-        return '<Card {}{}>'.format(self.suit, self.number)
+        return '<Card {}>'.format(self)
+    
+    def __str__(self):
+        return '{} {}'.format(self.suit, self.number)
     
     def __eq__(self, other):
         return (
