@@ -22,8 +22,8 @@ class DealerComponent:
         print(self._dealer.name, self._dealer.point)
         print(self._dealer.hand)
     
-    def _change_state(self, game):
-        if self.update(game):
+    def _change_state(self, state={}):
+        if self.update(state):
             print('{}: Hit'.format(self._dealer.name))
         else:
             print('{}: Stand'.format(self._dealer.name))

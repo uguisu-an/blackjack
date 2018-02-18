@@ -37,8 +37,8 @@ class PlayerComponent:
                 break
             print('Use h[it] or s[tand].')
     
-    def _change_state(self, game):
-        if self.update(game):
+    def _change_state(self, state={}):
+        if self.update(state):
             print('{}: Hit'.format(self._player.name))
         else:
             print('{}: Stand'.format(self._player.name))
