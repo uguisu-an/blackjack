@@ -1,13 +1,14 @@
 import random
 import blackjack.result as result
+from blackjack import Deck, Dealer, Player
 from blackjack.dispatcher import dispatcher
 
 
 class GameStore:
-    def __init__(self, deck, dealer, player):
-        self._deck = deck
-        self._dealer = dealer
-        self._player = player
+    def __init__(self):
+        self._deck = Deck()
+        self._dealer = Dealer(self._deck, [])
+        self._player = Player(self._deck, [])
         self._game_result = None
         self._game_is_over = False
         self._turn_is_over = False

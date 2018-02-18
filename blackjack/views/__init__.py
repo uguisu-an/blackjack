@@ -1,0 +1,3 @@
+from blackjack.views.game_component import GameComponent
+from blackjack.views.dealer_component import DealerComponent
+from blackjack.views.player_component import PlayerComponent
