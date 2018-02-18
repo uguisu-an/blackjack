@@ -1,5 +1,5 @@
 import random
-import blackjack.result as result
+import blackjack.models.result as result
 from blackjack import Deck, Dealer, Player
 from blackjack.dispatcher import dispatcher
 import blackjack.actions as actions

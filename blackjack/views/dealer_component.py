@@ -1,5 +1,5 @@
 from blackjack.dispatcher import dispatcher
-import blackjack.point as pt
+import blackjack.models.point as pt
 import blackjack.actions as actions
 
 

@@ -1,4 +1,4 @@
-import blackjack.result as result
+import blackjack.models.result as result
 import blackjack.actions as actions
 from blackjack.dispatcher import dispatcher
 

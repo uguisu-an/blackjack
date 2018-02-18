@@ -1,5 +1,5 @@
 import tramp.number as nm
-import blackjack.result as result
+import blackjack.models.result as result
 
 
 def point(number):

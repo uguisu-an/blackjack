@@ -1,5 +1,5 @@
 from tramp import Card, Heart
-from blackjack.player import Player
+from blackjack.models.player import Player
 
 
 def test_player_is_blackjack():

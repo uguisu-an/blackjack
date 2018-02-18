@@ -1,7 +1,7 @@
 from tramp import Card, Heart
-import blackjack.hand as hd
-import blackjack.point as pt
-import blackjack.result as rs
+import blackjack.models.hand as hd
+import blackjack.models.point as pt
+import blackjack.models.result as rs
 
 
 def test_point():

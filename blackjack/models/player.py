@@ -1,5 +1,5 @@
-import blackjack.deck as dk
-import blackjack.hand as hd
+import blackjack.models.deck as dk
+import blackjack.models.hand as hd
 
 
 # TODO: hit_or_standいらなくなりそう

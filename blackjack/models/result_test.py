@@ -1,4 +1,4 @@
-import blackjack.result as rs
+import blackjack.models.result as rs
 
   
 def test_judge_from_point():

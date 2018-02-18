@@ -1,6 +1,6 @@
 import tramp.number as nm
-import blackjack.point as pt
-import blackjack.result as result
+import blackjack.models.point as pt
+import blackjack.models.result as result
 
 
 def _numbers(hand):

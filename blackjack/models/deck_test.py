@@ -1,4 +1,4 @@
-import blackjack.deck as dk
+import blackjack.models.deck as dk
 
 
 def test_generating_deck():
