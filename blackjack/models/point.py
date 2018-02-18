@@ -1,5 +1,4 @@
 import tramp.number as nm
-import blackjack.models.result as result
 
 
 def point(number):
@@ -7,14 +6,6 @@ def point(number):
     if number > 10:
         return 10
     return number
-
-def sum_of_point(numbers):
-    s = 0
-    for number in sorted(numbers, reverse=True):
-        s += point(number)
-        if number == 1 and not result.is_busted(s+10):
-            s += 10
-    return s
 
 
 class Point:
