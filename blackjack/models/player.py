@@ -1,5 +1,4 @@
-import blackjack.models.deck as dk
-import blackjack.models.hand as hd
+from blackjack.models.point import Point
 
 
 class Player:
@@ -21,4 +20,8 @@ class Player:
     
     @property
     def point(self):
-        return hd.point(self.hand)
+        return Point(self._numbers)
+    
+    @property
+    def _numbers(self):
+        return [c.number for c in self.hand]

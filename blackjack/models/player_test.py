@@ -4,7 +4,9 @@ from blackjack.models.player import Player
 
 def test_player_point():
     john = Player(hand=[Card(Heart, 1)])
+    jane = Player(hand=[Card(Heart, 1), Card(Heart, 10)])
     assert john.point == 11
+    assert jane.point == 21
 
 def test_hitting():
     deck = [1, 2, 3]
