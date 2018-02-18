@@ -16,7 +16,6 @@ class GameStore:
     
     def _begin_game(self):
         self._game.begin()
-        self._game.update_result()
         self._dispatcher.dispatch(actions.CHANGE_STATE, state=self.get_state())
     
     #TODO: BEGIN_TURNで決定してTURN_PLAYERで変更してもいいかも
@@ -25,7 +24,6 @@ class GameStore:
             player.hit()
         else:
             player.stand()
-        self._game.update_result()
         self._dispatcher.dispatch(actions.CHANGE_STATE, state=self.get_state())
     
     #TODO: 決定する処理はdealerに持たせる？
@@ -34,5 +32,4 @@ class GameStore:
             self._game.dealer.hit()
         else:
             self._game.dealer.stand()
-        self._game.update_result()
         self._dispatcher.dispatch(actions.CHANGE_STATE, state=self.get_state())
