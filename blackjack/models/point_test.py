@@ -21,3 +21,5 @@ def test_adding_point():
 
 def test_point_equality():
     assert Point([1]) == Point([5, 6])
+    assert Point([1]) > Point([5, 5])
+    assert Point([1]) < Point([6, 6])

@@ -24,6 +24,18 @@ class Point:
     def __eq__(self, other):
         return self.total == other
     
+    def __lt__(self, other):
+        return self.total < other
+    
+    def __le__(self, other):
+        return self.total <= other
+    
+    def __gt__(self, other):
+        return self.total > other
+    
+    def __ge__(self, other):
+        return self.total >= other
+    
     def __add__(self, other):
         return Point([*self, *other])
     
