@@ -21,8 +21,8 @@ class Game:
     @property
     def turn_is_over(self):
         return (
-            self.dealer.point >= 21
-            or self.player.point >= 21
+            self.dealer.point >= result.BLACKJACK
+            or self.player.point >= result.BLACKJACK
         )
     
     @property
