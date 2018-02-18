@@ -30,6 +30,9 @@ class Point:
     def __add__(self, other):
         return Point([*self, *other])
     
+    def __str__(self):
+        return str(self.total)
+    
     def __iter__(self):
         return iter(self._numbers)
     

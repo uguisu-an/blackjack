@@ -5,16 +5,10 @@ LOSE = -1
 BUSTED = -2
 
 
-def is_blackjack(point):
-    return point == BLACKJACK
-
-def is_busted(point):
-    return point > BLACKJACK
-
 def judge_from_point(dealer_point, player_point):
-    if is_busted(player_point):
+    if player_point > BLACKJACK:
         return LOSE
-    if is_busted(dealer_point):
+    if dealer_point > BLACKJACK:
         return WIN
     if dealer_point > player_point:
         return LOSE

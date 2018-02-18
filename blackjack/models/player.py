@@ -18,12 +18,6 @@ class AbstractPlayer:
     def is_stand(self):
         return self._is_stand
     
-    def is_blackjack(self):
-        return hd.is_blackjack(self.hand)
-    
-    def is_busted(self):
-        return hd.is_busted(self.hand)
-    
     @property
     def point(self):
         return hd.sum_of(self.hand)
