@@ -1,17 +1,24 @@
+import blackjack.result as result
 from blackjack.dispatcher import dispatcher
 
 
 class GameComponent:
     def __init__(self):
+        self._game_result = None
         self._dispatcher = dispatcher
-        self._dispatcher.on('BEGIN_GAME', self._begin_game)
-        self._dispatcher.on('END_GAME', self._end_game)
+        self._dispatcher.on('CHANGE_STATE', self.update)
+        self._dispatcher.on('SHOW_RESULT', self._show_result)
     
-    def update(self, state):
-        pass
+    def update(self, state={}):
+        self._game_result = state['game_result']
     
-    def _begin_game(self):
-        print('Begin the Game.')
+    def _show_result(self):
+        print(self._get_result_message())
     
-    def _end_game(self):
-        print('End the Game.')
+    #TODO: ロジックに移す
+    def _get_result_message(self):
+        if self._game_result == result.WIN:
+            return 'You Win!'
+        if self._game_result == result.LOSE:
+            return 'You Lose...'
+        return 'Draw'

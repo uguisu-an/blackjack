@@ -1,4 +1,5 @@
 import random
+import blackjack.result as result
 from blackjack.dispatcher import dispatcher
 
 
@@ -8,8 +9,10 @@ class GameStore:
         self.deck = deck
         self.dealer = dealer
         self.player = player
+        self.game_result = None
         self.game_is_over = False
         self.turn_is_over = False
+        self._dispatcher = dispatcher
         dispatcher.on('BEGIN_GAME', self._begin_game)
         dispatcher.on('TURN_DEALER', self._turn_dealer)
         dispatcher.on('HIT_OR_STAND', self._hit_or_stand)
@@ -21,6 +24,7 @@ class GameStore:
             'deck': self.deck,
             'dealer': self.dealer,
             'player': self.player,
+            'game_result': self.game_result,
             'game_is_over': self.game_is_over,
             'turn_is_over': self.turn_is_over,
         }
@@ -32,6 +36,7 @@ class GameStore:
             self.player.hit()
             self.dealer.hit()
         self._set_result()
+        self._dispatcher.dispatch('CHANGE_STATE', state=self.get_state())
     
     def _hit_or_stand(self, player=None, decision=None):
         if decision == 'hit':
@@ -39,6 +44,7 @@ class GameStore:
         else:
             player.stand()
         self._set_result()
+        self._dispatcher.dispatch('CHANGE_STATE', state=self.get_state())
     
     #TODO: 決定する処理はdealerに持たせる？
     def _turn_dealer(self):
@@ -47,6 +53,7 @@ class GameStore:
         else:
             self.dealer.stand()
         self._set_result()
+        self._dispatcher.dispatch('CHANGE_STATE', state=self.get_state())
 
     #TODO: Gameに任せてもいい
     def _set_result(self):
@@ -57,5 +64,11 @@ class GameStore:
         self.game_is_over = (
             self.player.is_stand()
             or self.turn_is_over
+        )
+        if not self.game_is_over:
+            return
+        self.game_result = result.judge_from_point(
+            self.dealer.point,
+            self.player.point
         )
     
