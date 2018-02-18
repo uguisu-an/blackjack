@@ -1,3 +1,4 @@
 import blackjack.views.cui as cui
 
-cui.run()
+if __name__ == '__main__':
+    cui.run()
