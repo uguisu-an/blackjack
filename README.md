@@ -3,7 +3,7 @@
 ## Start Playing
 
 ```
-$ python blackjack_game.py
+$ python bj.py
 ```
 
 ## Hit or Stand

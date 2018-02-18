@@ -5,6 +5,7 @@ class PlayerComponent:
     def __init__(self):
         self._player = None
         self._dispatcher = dispatcher
+        self._dispatcher.on('BEGIN_TURN', self._begin_turn)
         self._dispatcher.on('TURN_PLAYER', self._turn_player)
         self._dispatcher.on('END_GAME', self._end_game)
         self._dispatcher.on('CHANGE_STATE', self._change_state)
@@ -17,7 +18,11 @@ class PlayerComponent:
             updated = False
         self._player = player
         return updated
-
+    
+    def _begin_turn(self):
+        print(self._player.name, self._player.point)
+        print(self._player.hand)
+    
     def _turn_player(self):
         while True:
             print('Hit or Stand?')
