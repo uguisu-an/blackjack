@@ -20,7 +20,7 @@ class AbstractPlayer:
     
     @property
     def point(self):
-        return hd.sum_of(self.hand)
+        return hd.point(self.hand)
 
 
 class Player(AbstractPlayer):

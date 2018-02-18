@@ -4,6 +4,6 @@ import blackjack.models.point as pt
 import blackjack.models.result as rs
 
 
-def test_sum_of_hand():
+def test_hand_point():
     hand = [Card(Heart, 1), Card(Heart, 10)]
-    assert hd.sum_of(hand) == 21
+    assert hd.point(hand) == 21
