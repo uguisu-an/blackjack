@@ -2,6 +2,8 @@ from blackjack.models.point import Point
 
 
 class Player:
+    """プレイヤーの情報を持つ."""
+
     def __init__(self, name='no name', deck=[], hand=[]):
         self.name = name
         self.deck = deck

@@ -2,6 +2,7 @@ import tramp.number as nm
 
 
 def point(number):
+    """カードの番号からポイントを計算する."""
     assert number in nm.All
     if number > 10:
         return 10
@@ -9,6 +10,8 @@ def point(number):
 
 
 class Point:
+    """カードの番号からポイントの合計を計算する."""
+
     def __init__(self, numbers=[]):
         self._numbers = numbers
 

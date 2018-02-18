@@ -1,4 +1,6 @@
 class Dispatcher:
+    """イベントを管理する."""
+
     def __init__(self):
         self._handlers = {}
 

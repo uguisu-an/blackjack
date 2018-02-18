@@ -4,6 +4,8 @@ import blackjack.action as act
 
 
 class PlayerComponent:
+    """プレイヤーの情報を表示する."""
+    
     def __init__(self):
         self._player = None
         self._dispatcher = dispatcher

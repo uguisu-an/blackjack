@@ -3,6 +3,8 @@ import blackjack.action as act
 
 
 class GameRunner:
+    """ゲームを進行する."""
+    
     def __init__(self):
         self._game_is_over = False
         self._turn_is_over = False

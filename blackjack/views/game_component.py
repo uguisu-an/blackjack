@@ -4,6 +4,8 @@ from blackjack.dispatcher import dispatcher
 
 
 class GameComponent:
+    """ゲームの情報を表示する."""
+    
     def __init__(self):
         self._game_result = None
         self._dispatcher = dispatcher

@@ -1,4 +1,6 @@
 class Card:
+    """カードの情報を持つ."""
+    
     def __init__(self, suit, number):
         self.suit = suit
         self.number = number

@@ -4,6 +4,8 @@ import blackjack.action as act
 
 
 class GameStore:
+    """Gameを制御する."""
+
     def __init__(self):
         self._game = Game()
         self._dispatcher = dispatcher
