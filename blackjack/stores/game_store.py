@@ -2,6 +2,7 @@ import random
 import blackjack.result as result
 from blackjack import Deck, Dealer, Player
 from blackjack.dispatcher import dispatcher
+import blackjack.actions as actions
 
 
 class GameStore:
@@ -13,9 +14,9 @@ class GameStore:
         self._game_is_over = False
         self._turn_is_over = False
         self._dispatcher = dispatcher
-        self._dispatcher.on('BEGIN_GAME', self._begin_game)
-        self._dispatcher.on('TURN_DEALER', self._turn_dealer)
-        self._dispatcher.on('HIT_OR_STAND', self._hit_or_stand)
+        self._dispatcher.on(actions.BEGIN_GAME, self._begin_game)
+        self._dispatcher.on(actions.TURN_DEALER, self._turn_dealer)
+        self._dispatcher.on(actions.HIT_OR_STAND, self._hit_or_stand)
 
     def get_state(self):
         #TODO: namedtupleでもいい
@@ -36,15 +37,16 @@ class GameStore:
             self._player.hit()
             self._dealer.hit()
         self._set_result()
-        self._dispatcher.dispatch('CHANGE_STATE', state=self.get_state())
+        self._dispatcher.dispatch(actions.CHANGE_STATE, state=self.get_state())
     
+    #TODO: BEGIN_TURNで決定してTURN_PLAYERで変更してもいいかも
     def _hit_or_stand(self, player=None, decision=None):
         if decision == 'hit':
             player.hit()
         else:
             player.stand()
         self._set_result()
-        self._dispatcher.dispatch('CHANGE_STATE', state=self.get_state())
+        self._dispatcher.dispatch(actions.CHANGE_STATE, state=self.get_state())
     
     #TODO: 決定する処理はdealerに持たせる？
     def _turn_dealer(self):
@@ -53,7 +55,7 @@ class GameStore:
         else:
             self._dealer.stand()
         self._set_result()
-        self._dispatcher.dispatch('CHANGE_STATE', state=self.get_state())
+        self._dispatcher.dispatch(actions.CHANGE_STATE, state=self.get_state())
 
     #TODO: Gameに任せてもいい
     def _set_result(self):

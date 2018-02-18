@@ -1,4 +1,5 @@
 import blackjack.result as result
+import blackjack.actions as actions
 from blackjack.dispatcher import dispatcher
 
 
@@ -6,8 +7,8 @@ class GameComponent:
     def __init__(self):
         self._game_result = None
         self._dispatcher = dispatcher
-        self._dispatcher.on('CHANGE_STATE', self.update)
-        self._dispatcher.on('SHOW_RESULT', self._show_result)
+        self._dispatcher.on(actions.CHANGE_STATE, self.update)
+        self._dispatcher.on(actions.SHOW_RESULT, self._show_result)
     
     def update(self, state={}):
         self._game_result = state['game_result']

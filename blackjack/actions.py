@@ -1,17 +1,10 @@
-from blackjack.dispatcher import dispatcher
+BEGIN_GAME = 'BEGIN_GAME'
+END_GAME = 'END_GAME'
+BEGIN_TURN = 'BEGIN_TURN'
+END_TURN = 'END_TURN'
+TURN_DEALER = 'TURN_DEALER'
+TURN_PLAYER = 'TURN_PLAYER'
+HIT_OR_STAND = 'HIT_OR_STAND'
 
-
-def hit():
-    dispatcher.dispatch('PLAYER_HIT')
-
-def stand():
-    dispatcher.dispatch('PLAYER_STAND')
-
-def ask_hit_or_stand():
-    dispatcher.dispatch('ASK_HIT_OR_STAND')
-
-def show_hand():
-    dispatcher.dispatch('SHOW_HAND')
-
-def game_over(result):
-    dispatcher.dispatch('GAMEOVER', result=result)
+CHANGE_STATE = 'CHANGE_STATE'
+SHOW_RESULT = 'SHOW_RESULT'
