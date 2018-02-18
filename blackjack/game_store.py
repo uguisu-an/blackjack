@@ -12,9 +12,9 @@ class GameStore:
         self._game_is_over = False
         self._turn_is_over = False
         self._dispatcher = dispatcher
-        dispatcher.on('BEGIN_GAME', self._begin_game)
-        dispatcher.on('TURN_DEALER', self._turn_dealer)
-        dispatcher.on('HIT_OR_STAND', self._hit_or_stand)
+        self._dispatcher.on('BEGIN_GAME', self._begin_game)
+        self._dispatcher.on('TURN_DEALER', self._turn_dealer)
+        self._dispatcher.on('HIT_OR_STAND', self._hit_or_stand)
 
     def get_state(self):
         #TODO: namedtupleでもいい
