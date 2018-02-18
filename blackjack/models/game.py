@@ -5,32 +5,32 @@ from blackjack import Deck, Dealer, Player
 
 class Game:
     def __init__(self):
-        self._deck = Deck()
-        self._dealer = Dealer(self._deck, [])
-        self._player = Player(self._deck, [])
-        self._game_result = None
-        self._game_is_over = False
-        self._turn_is_over = False
+        self.deck = Deck()
+        self.dealer = Dealer(self.deck, [])
+        self.player = Player(self.deck, [])
+        self.game_result = None
+        self.game_is_over = False
+        self.turn_is_over = False
     
     def begin(self):
-        random.shuffle(self._deck)
+        random.shuffle(self.deck)
         for _ in range(2):
-            self._player.hit()
-            self._dealer.hit()
+            self.player.hit()
+            self.dealer.hit()
 
     def update_result(self):
-        self._turn_is_over = (
-            self._dealer.point >= 21
-            or self._player.point >= 21
+        self.turn_is_over = (
+            self.dealer.point >= 21
+            or self.player.point >= 21
         )
-        self._game_is_over = (
-            self._player.is_stand()
-            or self._turn_is_over
+        self.game_is_over = (
+            self.player.is_stand()
+            or self.turn_is_over
         )
-        if not self._game_is_over:
+        if not self.game_is_over:
             return
-        self._game_result = result.judge_from_point(
-            self._dealer.point,
-            self._player.point
+        self.game_result = result.judge_from_point(
+            self.dealer.point,
+            self.player.point
         )
     

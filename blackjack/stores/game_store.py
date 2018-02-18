@@ -13,12 +13,12 @@ class GameStore:
 
     def get_state(self):
         return {
-            'deck': self._game._deck,
-            'dealer': self._game._dealer,
-            'player': self._game._player,
-            'game_result': self._game._game_result,
-            'game_is_over': self._game._game_is_over,
-            'turn_is_over': self._game._turn_is_over,
+            'deck': self._game.deck,
+            'dealer': self._game.dealer,
+            'player': self._game.player,
+            'game_result': self._game.game_result,
+            'game_is_over': self._game.game_is_over,
+            'turn_is_over': self._game.turn_is_over,
         }
     
     def _begin_game(self):
@@ -37,9 +37,9 @@ class GameStore:
     
     #TODO: 決定する処理はdealerに持たせる？
     def _turn_dealer(self):
-        if self._game._dealer.point < 17:
-            self._game._dealer.hit()
+        if self._game.dealer.point < 17:
+            self._game.dealer.hit()
         else:
-            self._game._dealer.stand()
+            self._game.dealer.stand()
         self._game.update_result()
         self._dispatcher.dispatch(actions.CHANGE_STATE, state=self.get_state())
