@@ -12,7 +12,7 @@ class DealerComponent:
         self._dispatcher.on(actions.END_GAME, self._end_game)
 
     def update(self, state={}):
-        self._dealer = state['dealer']
+        self._dealer = state.dealer
 
     def _begin_turn(self):
         self._show_name(hole=True)

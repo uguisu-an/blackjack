@@ -21,5 +21,5 @@ class GameRunner:
         self._dispatcher.dispatch(actions.SHOW_RESULT)
     
     def update(self, state={}):
-        self._game_is_over = state['game_is_over']
-        self._turn_is_over = state['turn_is_over']
+        self._game_is_over = state.game_is_over
+        self._turn_is_over = state.turn_is_over

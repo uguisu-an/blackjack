@@ -12,7 +12,7 @@ class PlayerComponent:
         self._dispatcher.on('END_GAME', self._end_game)
     
     def update(self, state={}):
-        self._player = state['player']
+        self._player = state.player
     
     def _begin_turn(self):
         self._show_name()

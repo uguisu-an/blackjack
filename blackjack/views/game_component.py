@@ -11,7 +11,7 @@ class GameComponent:
         self._dispatcher.on(actions.SHOW_RESULT, self._show_result)
     
     def update(self, state={}):
-        self._game_result = state['game_result']
+        self._game_result = state.game_result
     
     def _show_result(self):
         print(self._get_result_message())

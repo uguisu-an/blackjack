@@ -12,14 +12,7 @@ class GameStore:
         self._dispatcher.on(actions.HIT_OR_STAND, self._hit_or_stand)
 
     def get_state(self):
-        return {
-            'deck': self._game.deck,
-            'dealer': self._game.dealer,
-            'player': self._game.player,
-            'game_result': self._game.game_result,
-            'game_is_over': self._game.game_is_over,
-            'turn_is_over': self._game.turn_is_over,
-        }
+        return self._game
     
     def _begin_game(self):
         self._game.begin()
