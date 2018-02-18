@@ -16,7 +16,6 @@ class GameComponent:
     def _show_result(self):
         print(self._get_result_message())
     
-    #TODO: ロジックに移す
     def _get_result_message(self):
         if self._game_result == result.WIN:
             return 'You Win!'
