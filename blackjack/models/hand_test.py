@@ -4,6 +4,7 @@ import blackjack.models.point as pt
 import blackjack.models.result as rs
 
 
+#TODO: ここから
 def test_point():
     assert pt.point(10) == 10
     assert pt.point(11) == 10
@@ -20,6 +21,8 @@ def test_sum_of_point_with_picture_card():
 
 def test_sum_of_point_without_card():
     assert pt.sum_of_point([]) == 0
+
+#TODO: ここまで不要
 
 def test_sum_of_hand():
     hand = [Card(Heart, 1), Card(Heart, 10)]
