@@ -2,8 +2,9 @@ import blackjack.models.deck as dk
 import blackjack.models.hand as hd
 
 
-class AbstractPlayer:
-    def __init__(self, deck=[], hand=[]):
+class Player:
+    def __init__(self, name='no name', deck=[], hand=[]):
+        self.name = name
         self.deck = deck
         self.hand = hand
         self._is_stand = False
@@ -21,11 +22,3 @@ class AbstractPlayer:
     @property
     def point(self):
         return hd.point(self.hand)
-
-
-class Player(AbstractPlayer):
-    name = 'Player'
-
-
-class Dealer(AbstractPlayer):
-    name = 'Dealer'

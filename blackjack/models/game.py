@@ -1,13 +1,13 @@
 import random
 import blackjack.models.result as result
-from blackjack import Deck, Dealer, Player
+from blackjack import Deck, Player
 
 
 class Game:
     def __init__(self):
         self.deck = Deck()
-        self.dealer = Dealer(self.deck, [])
-        self.player = Player(self.deck, [])
+        self.dealer = Player('Dealer', self.deck, [])
+        self.player = Player('Player', self.deck, [])
     
     def begin(self):
         random.shuffle(self.deck)

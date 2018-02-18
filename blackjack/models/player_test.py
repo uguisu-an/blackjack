@@ -9,7 +9,7 @@ def test_player_point():
 def test_hitting():
     deck = [1, 2, 3]
     hand = []
-    john = Player(deck, hand)
+    john = Player(deck=deck, hand=hand)
     assert not john.is_stand()
     john.hit()
     assert len(deck) == 2
@@ -19,7 +19,7 @@ def test_hitting():
 def test_standing():
     deck = [1, 2, 3]
     hand = []
-    john = Player(deck, hand)
+    john = Player(deck=deck, hand=hand)
     assert not john.is_stand()
     john.stand()
     assert len(deck) == 3
