@@ -1,5 +1,5 @@
 from blackjack.dispatcher import dispatcher
-import blackjack.actions as actions
+import blackjack.action as act
 
 
 class GameRunner:
@@ -7,18 +7,18 @@ class GameRunner:
         self._game_is_over = False
         self._turn_is_over = False
         self._dispatcher = dispatcher
-        self._dispatcher.on(actions.CHANGE_STATE, self.update)
+        self._dispatcher.on(act.CHANGE_STATE, self.update)
 
     def run(self):
-        self._dispatcher.dispatch(actions.BEGIN_GAME)
+        self._dispatcher.dispatch(act.BEGIN_GAME)
         while not self._game_is_over:
-            self._dispatcher.dispatch(actions.BEGIN_TURN)
-            self._dispatcher.dispatch(actions.TURN_PLAYER)
+            self._dispatcher.dispatch(act.BEGIN_TURN)
+            self._dispatcher.dispatch(act.TURN_PLAYER)
             if not self._turn_is_over:
-                self._dispatcher.dispatch(actions.TURN_DEALER)
-            self._dispatcher.dispatch(actions.END_TURN)
-        self._dispatcher.dispatch(actions.END_GAME)
-        self._dispatcher.dispatch(actions.SHOW_RESULT)
+                self._dispatcher.dispatch(act.TURN_DEALER)
+            self._dispatcher.dispatch(act.END_TURN)
+        self._dispatcher.dispatch(act.END_GAME)
+        self._dispatcher.dispatch(act.SHOW_RESULT)
     
     def update(self, state={}):
         self._game_is_over = state.game_is_over
