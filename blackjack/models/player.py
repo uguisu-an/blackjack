@@ -2,7 +2,6 @@ import blackjack.models.deck as dk
 import blackjack.models.hand as hd
 
 
-# TODO: hit_or_standいらなくなりそう
 class AbstractPlayer:
     def __init__(self, deck=[], hand=[]):
         self.deck = deck
@@ -15,15 +14,6 @@ class AbstractPlayer:
     
     def stand(self):
         self._is_stand = True
-    
-    def hit_or_stand(self):
-        if self.is_stand():
-            self.stand()
-        else:
-            self.choice()
-    
-    def choice(self):
-        raise NotImplementedError
     
     def is_stand(self):
         return self._is_stand
@@ -42,19 +32,6 @@ class AbstractPlayer:
 class Player(AbstractPlayer):
     name = 'Player'
 
-    def choice(self):
-        print('hit or stand?')
-        if 'h' in input():
-            self.hit()
-        else:
-            self.stand()
-
 
 class Dealer(AbstractPlayer):
     name = 'Dealer'
-
-    def choice(self):
-        if hd.sum_of(self.hand) < 17:
-            self.hit()
-        else:
-            self.stand()
