@@ -1,4 +1,5 @@
 from blackjack.models.point import Point
+import blackjack.models.decision as decision_
 
 
 class Player:
@@ -8,17 +9,19 @@ class Player:
         self.name = name
         self.deck = deck
         self.hand = hand
-        self._is_stand = False
+        self._decision = decision_.HIT
     
     def hit(self):
-        card = self.deck.pop(0)
-        self.hand.append(card)
+        self.decide(decision_.HIT)
+        self.hit_or_stand()
     
     def stand(self):
-        self._is_stand = True
+        self.decide(decision_.STAND)
+        self.hit_or_stand()
     
+    #TODO: APIを統一する?
     def is_stand(self):
-        return self._is_stand
+        return self._decision.did_stand()
     
     @property
     def point(self):
@@ -27,3 +30,10 @@ class Player:
     @property
     def _numbers(self):
         return [c.number for c in self.hand]
+    
+    def decide(self, decision):
+        self._decision = decision
+    
+    #TODO: 名前がイマイチ
+    def hit_or_stand(self):
+        self._decision.change(self)
