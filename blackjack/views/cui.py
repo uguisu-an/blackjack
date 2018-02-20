@@ -1,5 +1,4 @@
 from blackjack.models.game import Game
-from blackjack.models.point import point
 import blackjack.models.result as result
 import blackjack.models.decision as dc
 
@@ -47,7 +46,7 @@ def _show_hand(player, hole):
             print('* hole card *')
             hole = False
         else:
-            print('{} ({})'.format(card, point(card.number)))
+            print('{} ({})'.format(card, card.point))
     
 def _get_result_message(result_):
     if result_ == result.WIN:

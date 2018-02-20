@@ -1,11 +1,12 @@
 import tramp
+from blackjack.models.card import Card
 
 
 def generate_deck():
     deck = []
     for suit in tramp.suit.All:
         for number in tramp.number.All:
-            deck.append(tramp.Card(suit, number))
+            deck.append(Card(suit, number))
     return deck
 
 def deal(deck, hand):

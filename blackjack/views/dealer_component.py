@@ -1,5 +1,4 @@
 from blackjack.dispatcher import dispatcher
-import blackjack.models.point as pt
 import blackjack.action as act
 
 
@@ -38,5 +37,5 @@ class DealerComponent:
                 print('* hole card *')
                 hole = False
                 continue
-            print('{} ({})'.format(card, pt.point(card.number)))
+            print('{} ({})'.format(card, card.point))
     

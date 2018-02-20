@@ -1,5 +1,6 @@
-from tramp import Card, Heart
+from tramp import Heart
 from blackjack.models.game import Game
+from blackjack.models.card import Card
 from blackjack.models.result import WIN, LOSE
 
 

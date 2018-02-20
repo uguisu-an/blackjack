@@ -1,5 +1,4 @@
 from blackjack.dispatcher import dispatcher
-import blackjack.models.point as pt
 import blackjack.models.decision as dc
 import blackjack.action as act
 
@@ -41,5 +40,5 @@ class PlayerComponent:
 
     def _show_hand(self):
         for card in self._player.hand:
-            print('{} ({})'.format(card, pt.point(card.number)))
+            print('{} ({})'.format(card, card.point))
     
