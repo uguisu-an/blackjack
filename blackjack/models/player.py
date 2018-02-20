@@ -11,17 +11,6 @@ class Player:
         self.hand = hand
         self._decision = decision_.HIT
     
-    def hit(self):
-        self.decide(decision_.HIT)
-        self.run()
-    
-    def stand(self):
-        self.decide(decision_.STAND)
-        self.run()
-    
-    def frozen(self):
-        return self._decision.frozen()
-    
     @property
     def point(self):
         return Point(self._numbers)
@@ -30,8 +19,21 @@ class Player:
     def _numbers(self):
         return [c.number for c in self.hand]
     
+    def frozen(self):
+        return self._decision.frozen()
+    
     def decide(self, decision):
         self._decision = decision
     
     def run(self):
         self._decision.change(self)
+
+    def hit(self):
+        self.decide(decision_.HIT)
+        self.run()
+    
+    def stand(self):
+        self.decide(decision_.STAND)
+        self.run()
+
+    
