@@ -22,10 +22,8 @@ class GameStore:
     
     #TODO: BEGIN_TURNで決定してTURN_PLAYERで変更してもいいかも
     def _hit_or_stand(self, player=None, decision=None):
-        if decision == 'hit':
-            player.hit()
-        else:
-            player.stand()
+        player.decide(decision)
+        player.hit_or_stand()
         self._dispatcher.dispatch(act.CHANGE_STATE, state=self.get_state())
     
     #TODO: 決定する処理はdealerに持たせる？

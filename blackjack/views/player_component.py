@@ -1,7 +1,7 @@
 from blackjack.dispatcher import dispatcher
 import blackjack.models.point as pt
+import blackjack.models.decision as dc
 import blackjack.action as act
-
 
 class PlayerComponent:
     """プレイヤーの情報を表示する."""
@@ -23,11 +23,11 @@ class PlayerComponent:
             decision = input()
             if decision.startswith('h'):
                 self._dispatcher.dispatch(act.HIT_OR_STAND,
-                    player=self._player, decision='hit')
+                    player=self._player, decision=dc.HIT)
                 break
             if decision.startswith('s'):
                 self._dispatcher.dispatch(act.HIT_OR_STAND,
-                    player=self._player, decision='stand')
+                    player=self._player, decision=dc.STAND)
                 break
             print('Use h[it] or s[tand].')
     

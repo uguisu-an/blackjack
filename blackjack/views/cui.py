@@ -1,6 +1,7 @@
 from blackjack.models.game import Game
 from blackjack.models.point import point
 import blackjack.models.result as result
+import blackjack.models.decision as dc
 
 
 def run():
@@ -22,11 +23,8 @@ def turn_dealer(game):
         game.dealer.stand()
 
 def turn_player(game):
-    decision = _ask_hit_or_stand()
-    if decision == 'hit':
-        game.player.hit()
-    if decision == 'stand':
-        game.player.stand()
+    game.player.decide(_ask_hit_or_stand())
+    game.player.hit_or_stand()
 
 def show_state(game, hole):
     _show_name(game.player, hole=False)
@@ -63,7 +61,7 @@ def _ask_hit_or_stand():
         print('Hit or Stand?')
         decision = input()
         if decision.startswith('h'):
-            return 'hit'
+            return dc.HIT
         if decision.startswith('s'):
-            return 'stand'
+            return dc.STAND
         print('Use h[it] or s[tand].')
