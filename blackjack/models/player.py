@@ -13,11 +13,11 @@ class Player:
     
     def hit(self):
         self.decide(decision_.HIT)
-        self.hit_or_stand()
+        self.run()
     
     def stand(self):
         self.decide(decision_.STAND)
-        self.hit_or_stand()
+        self.run()
     
     #TODO: APIを統一する?
     def is_stand(self):
@@ -34,6 +34,5 @@ class Player:
     def decide(self, decision):
         self._decision = decision
     
-    #TODO: 名前がイマイチ
-    def hit_or_stand(self):
+    def run(self):
         self._decision.change(self)

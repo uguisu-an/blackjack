@@ -24,7 +24,7 @@ def turn_dealer(game):
 
 def turn_player(game):
     game.player.decide(_ask_hit_or_stand())
-    game.player.hit_or_stand()
+    game.player.run()
 
 def show_state(game, hole):
     _show_name(game.player, hole=False)
