@@ -28,7 +28,7 @@ class Game:
     @property
     def game_is_over(self):
         return (
-            self.player.is_stand()
+            self.player.frozen()
             or self.turn_is_over
         )
     

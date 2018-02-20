@@ -12,18 +12,18 @@ def test_hitting():
     deck = [1, 2, 3]
     hand = []
     john = Player(deck=deck, hand=hand)
-    assert not john.is_stand()
+    assert not john.frozen()
     john.hit()
     assert len(deck) == 2
     assert len(hand) == 1
-    assert not john.is_stand()
+    assert not john.frozen()
 
 def test_standing():
     deck = [1, 2, 3]
     hand = []
     john = Player(deck=deck, hand=hand)
-    assert not john.is_stand()
+    assert not john.frozen()
     john.stand()
     assert len(deck) == 3
     assert len(hand) == 0
-    assert john.is_stand()
+    assert john.frozen()

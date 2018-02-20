@@ -19,9 +19,8 @@ class Player:
         self.decide(decision_.STAND)
         self.run()
     
-    #TODO: APIを統一する?
-    def is_stand(self):
-        return self._decision.did_stand()
+    def frozen(self):
+        return self._decision.frozen()
     
     @property
     def point(self):
